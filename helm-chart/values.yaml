@@ -1,0 +1,76 @@
+# Default values for agent.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+querydesk:
+  # this is checked first, otherwise we use  `querdesk.config`` to create a secret
+  configExistingSecret: 
+
+  # used to create secret if `querydesk.configExistingSecret` isn't set
+  config: # |
+    # {
+    #   "agent_id": "674cd578-911e-4d1c-810c-db92b385a7ad",
+    #   "credentials": [
+    #     {
+    #       "database_id": "5e57cf0f-2221-4819-a0ed-3a4f7240fe22",
+    #       "description": "read only",
+    #       "password": "postgres",
+    #       "reviews_required": 0,
+    #       "username": "postgres"
+    #     }
+    #   ],
+    #   "token": "xxxxx"
+    # }
+
+
+image:
+  repository: ghcr.io/querydesk/agent
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
