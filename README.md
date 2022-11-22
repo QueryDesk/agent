@@ -33,7 +33,7 @@ Currently we only provide instructions for running in k8s. Let us know what othe
 
     ```bash
     # make sure to use helm 3.8.0 or later, or set `export HELM_EXPERIMENTAL_OCI=1`
-    helm install agent oci://ghcr.io/querydesk/helm/agent --version 1.0.0 \
+    helm install agent oci://ghcr.io/querydesk/helm/agent --version 1.0.1 \
       --set querydesk.configExistingSecret=agent-config \
       --namespace querydesk
     ```
